@@ -55,22 +55,22 @@ const average = (arr) =>
 
 
 export default function App() {
-  
+  const [movies, setMovies] = useState(tempMovieData);
   
   
 
   return (
     <>     
-      <NavBar/>
+      <NavBar movies={movies}/>
 
-      <Main/>
+      <Main movies={movies}/>
     </>
   );
 }
 
 
 
-const NavBar = ()=>{
+const NavBar = ({movies})=>{
 
   
 
@@ -78,7 +78,7 @@ const NavBar = ()=>{
      <nav className="nav-bar">
         <Logo/>
         <Search/>
-        <NumResults/>
+        <NumResults movies={movies}/>
         
       </nav>
   )
@@ -109,18 +109,18 @@ const Search = ()=>{
   )
 }
 
-const NumResults = ()=>{
+const NumResults = ({movies})=>{
 
   return(
         <p className="num-results">
-          Found <strong>X</strong> results
+          Found <strong>{movies.length}</strong> results
         </p>
   )
 }
 
 
-const Main = ()=>{
-  const [movies, setMovies] = useState(tempMovieData);
+const Main = ({movies})=>{
+  
  
 
   return (
